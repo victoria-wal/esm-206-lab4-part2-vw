@@ -15,3 +15,39 @@ Here, we'll practice creating interactive graphs and tables, using built-in data
 - Interactive tables: {DT}
 
 Note: you can use ctrl+A and the space bar to stage multiple files.
+Note Part 2: Using ctrl + Shift + C, comment out selected lines of code.
+
+```{r, include = FALSE}
+# Attach packages
+library(tidyverse)
+library(plotly)
+library(DT)
+```
+
+### A. Making an interactive graph
+
+Using Edgar Anderson's famous 'iris' dataset
+
+```{r, echo = FALSE, eval = FALSE}
+iris_graph <- ggplot(data = iris,
+                     aes(x = Petal.Width,
+                         y = Petal.Length)) +
+  geom_point(aes(size = Sepal.Width,
+                 color = Species),
+             alpha = 0.5) +
+  theme_minimal() +
+  labs(x = "Petal width (cm)",
+       y = "Petal length (cm)",
+       title = "Iris graph")
+
+ggplotly(iris_graph)
+```
+
+# Now, an interactive table with DT.
+
+```{r}
+datatable(msleep)
+```
+
+
+
